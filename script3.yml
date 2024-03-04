@@ -1,0 +1,12 @@
+import subprocess
+
+image = input("Enter the image name : ")
+cont_name = input("Enter the container name : ")  
+detach = input("if you want detach mode enter y/n : ")
+
+if detach == 'y':
+  subprocess.call("docker run --name %s -P -d %s"%(cont_name,image),shell=True)
+elif detach == 'n':
+  subprocess.call("docker run --name %s -P %s"%(cont_name,image),shell=True)
+else:
+  print("Enter the valid option")

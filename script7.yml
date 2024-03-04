@@ -1,0 +1,13 @@
+import subprocess
+
+subprocess.call("free -m | grep Mem | awk '{print $3}' >file1 ",shell=True)
+
+f= open("file1","r")
+mem = int(f.read())
+
+if mem >= 100 and mem < 200 :
+  subprocess.call("docker service scale nginx=2",shell=True)
+elif mem >= 200 and mem < 300 :
+  subprocess.call("docker service scale nginx=3",shell=True)
+else:
+  print("Add more memory")

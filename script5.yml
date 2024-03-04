@@ -1,0 +1,8 @@
+import subprocess
+
+subprocess.call("docker network create --driver bridge new",shell=True)
+
+
+subprocess.call("docker run --name mydb -d -e MYSQL_ROOT_PASSWORD=hello --network new mysql:5 ",shell=True)
+
+subprocess.call("docker run --name myword -d -P --network new wordpress",shell=True)

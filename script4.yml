@@ -1,0 +1,10 @@
+import subprocess
+
+subprocess.call('docker ps -a | grep cacert | cut -d " " -f 1 >file1',shell=True)          
+
+f=open("file1","r")
+cont_id=f.readlines()
+i=0
+while i < len(cont_id):  
+  subprocess.call("docker rm -f %s"%cont_id[i],shell=True)
+  i = i+2
